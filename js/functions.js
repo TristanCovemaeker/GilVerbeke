@@ -1,6 +1,6 @@
 // General functions
 function playAudio() {
-    var audio = new Audio('/audio/Pre_test_Tone.mp3');
+    var audio = new Audio('/GilVerbeke/audio/Pre_test_Tone.mp3');
     audio.play();
 }
 
