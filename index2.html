@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>MAP_Verbeke_Pre-Test</title>
+        <script src="jspsych/jspsych.js"></script>
+        <script src="jspsych/plugins/jspsych-audio-keyboard-response.js"></script>
+        <script src="jspsych/plugins/jspsych-html-keyboard-response.js"></script>
+        <script src="jspsych/plugins/jspsych-html-button-response.js"></script>
+        <script src="jspsych/plugins/jspsych-instructions.js"></script>
+        <script src="js/MAP_Pre_test_Stimuli.js"></script>
+        <link href="JsPsych/css/jspsych.css" rel="stylesheet">
+    </head>
+    <body></body>
+    <script>    
+        var timeline = [];
+
+        // create list of all audio files for preloading
+        var all_audio = [];
+        for (var i = 0; i < pre_test_stim.length; i++) {
+            all_audio.push(pre_test_stim[i].target_audio);
+        }
+        
+        var instructions = {
+            type: 'instructions',
+            pages: [
+                '<p><b>Welkom bij het experiment!</b></p>'+
+                "<p>Druk op <b>'next'</b> om door te gaan naar de instructies.</p>",
+                '<div style="max-width:600px;"><p>In wat volgt zul je een reeks woorden horen met de [i]-klank. '+
+                "Het is de bedoeling dat je aangeeft of je een korte of een lange [i]-klank hoort.</p>"+
+                '<p>Hoor je een korte klinker zoals in <i>d<u>i</u>k</i>, druk dan op de <b>f-toets</b></p>'+
+                '<p>Hoor je een lange klinker zoals in <i>gen<u>ie</u>t</i>, druk dan op de <b>j-toets</b>.</p></div>',
+                '<p>Ter herinnering zal telkens herhaald worden welke toets met welke klank geassocieerd is.</p>'+
+                '<p>Merk op: niet alleen de <b>snelheid</b> maar ook de <b>nauwkeurigheid</b> van je antwoord is van belang.</p>'+
+                '<p>Het experiment duurt ongeveer 20 minuten.</p>'+
+                '<p>Veel succes!</p>'
+            ],
+            show_clickable_nav: true,
+        };
+        timeline.push(instructions);
+
+        var start_task = {
+            type: 'html-button-response',
+            stimulus: "Klik op <b>'Start'</b> om aan het experiment te beginnen.", 
+            choices: ['Start'],
+            response_ends_trial: true,
+            post_trial_gap: 1000
+        }
+        timeline.push(start_task);
+
+        var fixation = {
+            type: 'html-keyboard-response',
+            stimulus: '<span style="font-size:40px;">+</span>',
+            choices: jsPsych.NO_KEYS,
+            trial_duration: 500,
+            data: {
+                trial_part: 'fixation'            
+            }
+        };
+
+        var target = {
+            type: 'audio-keyboard-response', //I think this is the place where the name of the newly created plugin should go
+            stimulus: jsPsych.timelineVariable('target_audio'),
+            prompt: '<span style="font-size:40px;">+</span>',
+            choices: jsPsych.NO_KEYS,
+            response_allowed_while_playing: false,
+            trial_ends_after_audio: true,
+            autoplay: true,
+            data: {
+                target: jsPsych.timelineVariable('target'),
+                probe: jsPsych.timelineVariable('probe'),
+                condition: jsPsych.timelineVariable('condition'),
+                trial_part: 'target'
+            }
+        }; 
+
+        var probe = {
+            type: 'html-keyboard-response',
+            stimulus: function() {
+                return '<span style="font-size:40px;">' + jsPsych.timelineVariable('probe', true) + '</span>';
+            },
+            choices: ['f', 'j'],
+            post_trial_gap: 500,
+            response_ends_trial: true,
+            data: {
+                target: jsPsych.timelineVariable('target'),
+                probe: jsPsych.timelineVariable('probe'),
+                condition: jsPsych.timelineVariable('condition'),
+                trial_part: 'probe'
+            }
+        };
+
+        var main_procedure = {
+            timeline: [fixation, target, probe],
+            timeline_variables: pre_test_stim,
+            randomize_order: true
+        };
+        timeline.push(main_procedure);
+        
+
+        var end_screen = {
+            type: 'html-keyboard-response',
+            stimulus: '<p>Hartelijk dank om deel te nemen aan het experiment.</p>',
+            show_clickable_nav: true, 
+            choices: ['space']
+        }
+        timeline.push(end_screen);
+
+         jsPsych.init({
+            timeline: timeline,
+            preload_audio: all_audio,
+            show_preload_progress_bar: true,
+            use_webaudio: false,
+            override_safe_mode: true,
+            on_finish: function() {
+                jsPsych.data.displayData();
+            }
+        })
+
+    </script>
+</html>
