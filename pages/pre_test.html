@@ -4,24 +4,26 @@
         <title>MAP_Verbeke_Pre-Test</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <script src="jspsych/jspsych.js"></script>
-        <script src="jspsych/plugins/jspsych-audio-keyboard-response.js"></script>
-        <script src="jspsych/plugins/jspsych-html-keyboard-response.js"></script>
-        <script src="jspsych/plugins/jspsych-html-button-response.js"></script>
-        <script src="jspsych/plugins/jspsych-instructions.js"></script>
-        <script src="js/MAP_Pre_test_Stimuli_Short.js"></script>
-        <link href="jspsych/css/jspsych.css" rel="stylesheet">
+        <script src="/GilVerbeke/jspsych/jspsych.js"></script>
+        <script src="/GilVerbeke/jspsych/plugins/jspsych-audio-keyboard-response.js"></script>
+        <script src="/GilVerbeke/jspsych/plugins/jspsych-html-keyboard-response.js"></script>
+        <script src="/GilVerbeke/jspsych/plugins/jspsych-html-button-response.js"></script>
+        <script src="/GilVerbeke/jspsych/plugins/jspsych-instructions.js"></script>
+        <script src="/GilVerbeke/js/MAP_Pre_test_Stimuli.js"></script>
+        <script src="/GilVerbeke/js/functions.js"></script>
+        <link href="/GilVerbeke/jspsych/css/jspsych.css" rel="stylesheet">
     </head>
     <body>
-        <p>test</p>
     </body>
     <script>    
         var timeline = [];
 
+        randomizeSounds();
+
         // create list of all audio files for preloading
         var all_audio = [];
-        for (var i = 0; i < pre_test_stim.length; i++) {
-            all_audio.push(pre_test_stim[i].target_audio);
+        for (var i = 0; i < pre_test_stim_random.length; i++) {
+            all_audio.push(pre_test_stim_random[i].target_audio);
         }
         
         var instructions = {
@@ -95,8 +97,8 @@
 
         var main_procedure = {
             timeline: [fixation, target, probe],
-            timeline_variables: pre_test_stim,
-            randomize_order: true
+            timeline_variables: pre_test_stim_random,
+            //randomize_order: true
         };
         timeline.push(main_procedure);
         
