@@ -56,8 +56,7 @@ function splitSounds(array) {
     numberOfTrials = 2;//array.length / stimuliInTrial;
 
     for (var i = 0; i < numberOfTrials; i++) {
-        pre_test_stim_temp[i] = array.splice(0,stimuliInTrial);
+        pre_test_stim_temp[i] = array.splice(0, stimuliInTrial);
     }
-    //pre_test_stim_random = pre_test_stim_temp;
 }
 
