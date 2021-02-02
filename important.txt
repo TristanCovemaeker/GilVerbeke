@@ -3,4 +3,4 @@ TODO
     Data bundelen
     Data doorsturen naar backend
     Backend opzetten
-    Css veranderen bij keuze antwoord
+    Css veranderen bij keuze antwoord --> niet direct mogelijk
