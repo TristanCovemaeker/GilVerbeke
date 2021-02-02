@@ -1,1 +1,6 @@
-Change paths to work on github
+TODO
+    Forms valideren
+    Data bundelen
+    Data doorsturen naar backend
+    Backend opzetten
+    Css veranderen bij keuze antwoord
