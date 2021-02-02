@@ -60,3 +60,31 @@ function splitSounds(array) {
     }
 }
 
+function checkForm() {
+    var inputs = document.getElementsByTagName('input');
+    var select = document.getElementsByTagName('select');
+
+    if (inputs[0].value != '' && inputs[1].value != '' && inputs[2].value != '') {
+        var json = '{"age":"' + inputs[0].value + '", "gender":"' + select[0].value + '", "province":"' + inputs[1].value + '", "studies":"' + inputs[2].value + '"';
+        localStorage.setItem('json', json);
+        
+        toPage('/GilVerbeke/pages/audio_test.html');
+    } else {
+        alert('Gelieve alle velden in te vullen.');
+    }
+}
+
+function checkAudioTest() {
+    var inputs = document.getElementsByTagName('input');
+
+    if (inputs[0].value != '') {
+        var json = localStorage.getItem('json');
+        json += ', "headset":"' + inputs[0].value + '"}';
+        localStorage.setItem('json', json);
+        
+        toPage('/GilVerbeke/pages/pre_test.html');
+    } else {
+        console.log(json);
+        alert('Gelieve alle velden in te vullen.');
+    }
+}
