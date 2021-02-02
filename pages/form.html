@@ -9,13 +9,13 @@
     </head>
     <body>
         <div class="container-parent">
-            <div class="">
+            <div>
                 <h1 class="center">Gegevens</h1>
-                <div class="">
+                <div>
                     <label for="name">Leeftijd</label>
                     <input type="text" id="age" name="age">
                 </div>
-                <div class="">
+                <div>
                     <label for="gender">Geslacht</label>
                     <select name="gender" id="gender">
                         <option>Man</option>
@@ -23,18 +23,20 @@
                         <option>X</option>
                     </select>
                 </div>
-                <div class="">
+                <div>
                     <label for="surname">Geboorteprovincie</label>
                     <input type="text" id="province" name="province">
                 </div>
-                <div class="">
+                <div>
                     <label for="surname">Huidige opleiding</label>
                     <input type="text" id="studies" name="studies">
                 </div>
-                <button class="center btn">Next</button>
-                
-                
+                <div>
+                    <button class="btn" onclick="toPage('/GilVerbeke/pages/informed_consent.html');">Previous</button>
+                    <button class="btn" onclick="checkForm();">Next</button>
+                </div>              
             </div>
         </div>
+        <script src="/GilVerbeke/js/functions.js"></script>
     </body>
 </html>
