@@ -17,15 +17,15 @@
     </body>
     <script>    
         var timeline = [];
-
-        randomizeSounds();
-
         // create list of all audio files for preloading
         var all_audio = [];
-        for (var i = 0; i < pre_test_stim_random.length; i++) {
-            all_audio.push(pre_test_stim_random[i].target_audio);
+
+        for (var i = 0; i < pre_test_stim.length; i++) {
+            all_audio.push(pre_test_stim[i].target_audio);
         }
-        
+
+        randomizeSounds();      
+
         var instructions = {
             type: 'instructions',
             pages: [
@@ -95,23 +95,41 @@
             }
         };
 
-        var main_procedure = {
-            timeline: [fixation, target, probe],
-            timeline_variables: pre_test_stim_random,
-            //randomize_order: true
+        var pause = {
+            type: 'html-keyboard-response',
+            stimulus: '<p>Je mag even pauze nemen!</p>'+
+                      '<p>Druk op <strong>spatie</strong> om verder te gaan</p>',
+            choices: ['space'],
+            post_trial_gap: 500,
+            response_ends_trial: true,
+            data: {
+                target: jsPsych.timelineVariable('target'),
+                probe: jsPsych.timelineVariable('probe'),
+                condition: jsPsych.timelineVariable('condition'),
+                trial_part: 'probe'
+            }
         };
-        timeline.push(main_procedure);
-        
+
+        for (var i = 0; i < numberOfTrials; i++) {
+            var main_procedure = {
+            timeline: [fixation, target, probe],
+            timeline_variables: pre_test_stim_temp[i],
+            };
+            timeline.push(main_procedure);
+            if (i < numberOfTrials - 1){
+                timeline.push(pause);
+            }
+        }
 
         var end_screen = {
             type: 'html-keyboard-response',
             stimulus: '<p>Hartelijk dank om deel te nemen aan het experiment.</p>',
             show_clickable_nav: true, 
             choices: ['space']
-        }
+        };
         timeline.push(end_screen);
 
-         jsPsych.init({
+        jsPsych.init({
             timeline: timeline,
             preload_audio: all_audio,
             show_preload_progress_bar: true,
@@ -121,6 +139,5 @@
                 jsPsych.data.displayData();
             }
         })
-
     </script>
 </html>
