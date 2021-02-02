@@ -44,4 +44,20 @@ function randomizeSounds() {
             i++;
         }
     }
+
+    console.log(pre_test_stim_random);
+    splitSounds(pre_test_stim_random);
 }
+
+function splitSounds(array) {
+    pre_test_stim_temp = [];
+
+    stimuliInTrial = 2;
+    numberOfTrials = 2;//array.length / stimuliInTrial;
+
+    for (var i = 0; i < numberOfTrials; i++) {
+        pre_test_stim_temp[i] = array.splice(0,stimuliInTrial);
+    }
+    //pre_test_stim_random = pre_test_stim_temp;
+}
+
