@@ -10,6 +10,7 @@
         <script src="/GilVerbeke/jspsych/plugins/jspsych-html-button-response.js"></script>
         <script src="/GilVerbeke/jspsych/plugins/jspsych-instructions.js"></script>
         <script src="/GilVerbeke/js/MAP_Pre_test_Stimuli.js"></script>
+        <script src="/GilVerbeke/js/MAP_Pre_test_Stimuli_Short.js"></script>
         <script src="/GilVerbeke/js/functions.js"></script>
         <link href="/GilVerbeke/jspsych/css/jspsych.css" rel="stylesheet">
     </head>
@@ -92,6 +93,14 @@
                 probe: jsPsych.timelineVariable('probe'),
                 condition: jsPsych.timelineVariable('condition'),
                 trial_part: 'probe'
+            },
+            on_finish : function(data) {
+                if(data.key_press == 70) {
+                    console.log('f');
+                    console.log(document.getElementById('f'));
+                }else{
+                    console.log('j');
+                }
             }
         };
 
@@ -113,7 +122,7 @@
         for (var i = 0; i < numberOfTrials; i++) {
             var main_procedure = {
             timeline: [fixation, target, probe],
-            timeline_variables: pre_test_stim_temp[i],
+            timeline_variables: pre_test_stim2,
             };
             timeline.push(main_procedure);
             if (i < numberOfTrials - 1){
