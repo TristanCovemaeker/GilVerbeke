@@ -1,6 +1,7 @@
 TODO
-    Forms valideren
     Data bundelen
     Data doorsturen naar backend
     Backend opzetten
     Css veranderen bij keuze antwoord --> niet direct mogelijk
+
+numberOfTrials in functions.js aanpassen
