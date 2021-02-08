@@ -2208,49 +2208,49 @@ var pre_test_stim = [
       target: "vis_1_GEND",
       probe: "korte 'i' <b>(F)</b><font color = 'ffffff'>dolores</font>lange 'i' <b>(J)</b>",  //VIS ==> start of the gender manipulation
       target_audio: "js/Pre_Test_Audio/MWP_i_VIS_GEND_1.mp3",
-      condition: "non-gender_MWP",
+      condition: "gender_MWP",
       task_part: "pre_test"
     },
     {
       target: "vis_3_GEND",
       probe: "korte 'i' <b>(F)</b><font color = 'ffffff'>dolores</font>lange 'i' <b>(J)</b>",
       target_audio: "js/Pre_Test_Audio/MWP_i_VIS_GEND_3.mp3",
-      condition: "non-gender_MWP",
+      condition: "gender_MWP",
       task_part: "pre_test"   
     },
     {
       target: "vis_4_GEND",
       probe: "korte 'i' <b>(F)</b><font color = 'ffffff'>dolores</font>lange 'i' <b>(J)</b>",
       target_audio: "js/Pre_Test_Audio/MWP_i_VIS_GEND_4.mp3",
-      condition: "non-gender_MWP",
+      condition: "gender_MWP",
       task_part: "pre_test"     
     },
     {
       target: "vis_5_GEND",
       probe: "korte 'i' <b>(F)</b><font color = 'ffffff'>dolores</font>lange 'i' <b>(J)</b>",
       target_audio: "js/Pre_Test_Audio/MWP_i_VIS_GEND_5.mp3",
-      condition: "non-gender_MWP",
+      condition: "gender_MWP",
       task_part: "pre_test"   
     },
     {
       target: "vis_6_GEND",
       probe: "korte 'i' <b>(F)</b><font color = 'ffffff'>dolores</font>lange 'i' <b>(J)</b>",
       target_audio: "js/Pre_Test_Audio/MWP_i_VIS_GEND_6.mp3",
-      condition: "non-gender_MWP",
+      condition: "gender_MWP",
       task_part: "pre_test"     
     },
     {
       target: "vis_7_GEND",
       probe: "korte 'i' <b>(F)</b><font color = 'ffffff'>dolores</font>lange 'i' <b>(J)</b>",
       target_audio: "js/Pre_Test_Audio/MWP_i_VIS_GEND_7.mp3",
-      condition: "non-gender_MWP",
+      condition: "gender_MWP",
       task_part: "pre_test"   
     },
     {
       target: "vis_9_GEND",
       probe: "korte 'i' <b>(F)</b><font color = 'ffffff'>dolores</font>lange 'i' <b>(J)</b>",
       target_audio: "js/Pre_Test_Audio/MWP_i_VIS_GEND_9.mp3",
-      condition: "non-gender_MWP",
+      condition: "gender_MWP",
       task_part: "pre_test"     
     }, 
     {
