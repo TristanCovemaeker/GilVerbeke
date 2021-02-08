@@ -983,7 +983,7 @@ var pre_test_stim = [
     },
     {
       target: "advies_1",
-      probe: "Korte 'i' <b>(f)</b> of lange 'i' <b>(j)</b>",  //GilVerbeke/aDVIES
+      probe: "Korte 'i' <b>(f)</b> of lange 'i' <b>(j)</b>",  //ADVIES
       target_audio: "/GilVerbeke/audio/CW_ie_ADVIES_1.mp3",
       condition: "non-gender_CW",
       task_part: "pre_test"
