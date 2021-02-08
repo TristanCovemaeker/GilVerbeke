@@ -96,11 +96,11 @@
             },
             on_finish : function(data) {
                 if(data.key_press == 70) {
-                    console.log('f');
-                    console.log(document.getElementById('f'));
+                    data.key_press_letter = 'f';
                 }else{
-                    console.log('j');
+                    data.key_press_letter = 'j';
                 }
+                data.code = localStorage.getItem('accesscode');
             }
         };
 
@@ -115,14 +115,14 @@
                 target: jsPsych.timelineVariable('target'),
                 probe: jsPsych.timelineVariable('probe'),
                 condition: jsPsych.timelineVariable('condition'),
-                trial_part: 'probe'
+                trial_part: 'pause'
             }
         };
 
         for (var i = 0; i < numberOfTrials; i++) {
             var main_procedure = {
             timeline: [fixation, target, probe],
-            timeline_variables: pre_test_stim2,
+            timeline_variables: pre_test_stim_temp[i],
             };
             timeline.push(main_procedure);
             if (i < numberOfTrials - 1){
@@ -146,6 +146,19 @@
             override_safe_mode: true,
             on_finish: function() {
                 jsPsych.data.displayData();
+                var data = jsPsych.data.get();
+                data = data.filter({trial_part: "probe"});
+                data = data.ignore('internal_node_id');
+                data = data.ignore('probe');
+                data = data.ignore('stimulus');
+                data = data.ignore('trial_index');
+                data = data.ignore('trial_part');
+                data = data.ignore('trial_type');
+                json = data.json();
+                var userdata = localStorage.getItem('userdata');
+                console.log(userdata);
+                sendData(userdata, 'userdata')
+                sendData(json, 'testdata');
             }
         })
     </script>
