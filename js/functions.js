@@ -52,8 +52,8 @@ function randomizeSounds() {
 function splitSounds(array) {
     pre_test_stim_temp = [];
 
-    stimuliInTrial = 2;
-    numberOfTrials = 2;//array.length / stimuliInTrial;
+    stimuliInTrial = 50;
+    numberOfTrials = array.length / stimuliInTrial;
 
     for (var i = 0; i < numberOfTrials; i++) {
         pre_test_stim_temp[i] = array.splice(0, stimuliInTrial);
@@ -64,10 +64,13 @@ function checkForm() {
     var inputs = document.getElementsByTagName('input');
     var select = document.getElementsByTagName('select');
 
-    if (inputs[0].value != '' && inputs[1].value != '' && inputs[2].value != '') {
-        var json = '{"age":"' + inputs[0].value + '", "gender":"' + select[0].value + '", "province":"' + inputs[1].value + '", "studies":"' + inputs[2].value + '"';
-        localStorage.setItem('json', json);
-        
+    if (inputs[0].value != '' && inputs[1].value != '' && inputs[2].value != '' && inputs[3].value != '') {
+        var userdata = '{"code":"' + inputs[0].value + '", "age":"' + inputs[1].value + '", "gender":"' + select[0].value + '", "province":"' + inputs[2].value + '", "studies":"' + inputs[3].value + '"';
+        var accesscode = inputs[0].value;
+
+        localStorage.setItem('userdata', userdata);
+        localStorage.setItem('accesscode', accesscode);
+
         toPage('/GilVerbeke/pages/audio_test.html');
     } else {
         alert('Gelieve alle velden in te vullen.');
@@ -78,13 +81,29 @@ function checkAudioTest() {
     var inputs = document.getElementsByTagName('input');
 
     if (inputs[0].value != '') {
-        var json = localStorage.getItem('json');
-        json += ', "headset":"' + inputs[0].value + '"}';
-        localStorage.setItem('json', json);
-        
+        var userdata = localStorage.getItem('userdata');
+        userdata += ', "headset":"' + inputs[0].value + '"}';
+        localStorage.setItem('userdata', userdata);
+        //sendData(userdata, 'userdata');
+
         toPage('/GilVerbeke/pages/pre_test.html');
     } else {
-        console.log(json);
         alert('Gelieve alle velden in te vullen.');
     }
+}
+
+function sendData(data, endpoint) {
+    //data = '{"code":"TEST", "age":"13", "gender":"Vrouw", "province":"Limburg", "studies":"MCT", "headset":"Razor"}';
+    var url = 'https://gilverbekepretest.azurewebsites.net/api/';
+    url += endpoint;
+
+    fetch(url, {
+        method: 'post',
+        body: data,
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    }).then(res => res.json())
+        .then(response => console.log('Succes:', JSON.stringify(response)))
+        .catch(error => console.error('Error', error));
 }
