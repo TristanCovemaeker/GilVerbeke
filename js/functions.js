@@ -63,12 +63,12 @@ function checkForm() {
     var select = document.getElementsByTagName('select');
 
     if (inputs[0].value != '' && inputs[1].value != '' && inputs[2].value != '') {
-        var userdata = '{"code":"' + inputs[0].value + '", "age":"' + inputs[1].value + '", "gender":"' + select[0].value + '", "province":"' + select[1].value + '", "studies":"' + inputs[2].value + '"';
+        var userdata = '{"code":"' + inputs[0].value + '", "age":"' + inputs[1].value + '", "gender":"' + select[0].value + '", "province_geb":"' + select[1].value + '", "studies":"' + inputs[2].value + '", "province_opg":"' + select[2].value + '", "studies_inst":"' + select[3].value + '", "hearing":"' + select[4].value + '"';
         var accesscode = inputs[0].value;
 
         localStorage.setItem('userdata', userdata);
         localStorage.setItem('accesscode', accesscode);
-
+        
         toPage('/GilVerbeke/pages/audio_test.html');
     } else {
         alert('Gelieve alle velden in te vullen.');
