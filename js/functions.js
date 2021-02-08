@@ -44,8 +44,6 @@ function randomizeSounds() {
             i++;
         }
     }
-
-    console.log(pre_test_stim_random);
     splitSounds(pre_test_stim_random);
 }
 
