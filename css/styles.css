@@ -16,7 +16,7 @@ input {
 
 select {
     float: right;
-    width: 51.5%;
+    width: 50.5%;
 }
 
 label {
@@ -25,6 +25,14 @@ label {
 
 div {
     margin-bottom: 16px;
+}
+
+.smaller-16 {
+    font-size: 16px;
+}
+
+.align-left {
+    text-align: left;
 }
 
 .chosen {
@@ -42,6 +50,10 @@ div {
 
 .width50 {
     width: 50%;
+}
+
+.width30 {
+    width: 30%;
 }
 
 .container {
