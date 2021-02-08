@@ -28,8 +28,15 @@
                     </select>
                 </div>
                 <div>
-                    <label for="province">Geboorteprovincie</label>
-                    <select name="province" id="province">
+                    <label for="province_geb">Provincie Geboren</label>
+                    <select name="province_geb" id="province_geb">
+                        <option>West-Vlaanderen</option>
+                        <option>Oost-Vlaanderen</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="province_opg">Provincie Opgegroeid</label>
+                    <select name="province_opg" id="province_opg">
                         <option>West-Vlaanderen</option>
                         <option>Oost-Vlaanderen</option>
                     </select>
@@ -37,6 +44,13 @@
                 <div>
                     <label for="studies">Huidige opleiding</label>
                     <input type="text" id="studies" name="studies">
+                </div>
+                <div>
+                    <label for="hearing">Gehoorverlies</label>
+                    <select name="hearing" id="hearing">
+                        <option>Ja</option>
+                        <option>Nee</option>
+                    </select>
                 </div>
                 <div>
                     <button class="btn" onclick="toPage('/GilVerbeke/pages/informed_consent.html');">Previous</button>
