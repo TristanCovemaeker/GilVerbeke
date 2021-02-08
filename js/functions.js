@@ -62,8 +62,8 @@ function checkForm() {
     var inputs = document.getElementsByTagName('input');
     var select = document.getElementsByTagName('select');
 
-    if (inputs[0].value != '' && inputs[1].value != '' && inputs[2].value != '' && inputs[3].value != '') {
-        var userdata = '{"code":"' + inputs[0].value + '", "age":"' + inputs[1].value + '", "gender":"' + select[0].value + '", "province":"' + inputs[2].value + '", "studies":"' + inputs[3].value + '"';
+    if (inputs[0].value != '' && inputs[1].value != '' && inputs[2].value != '') {
+        var userdata = '{"code":"' + inputs[0].value + '", "age":"' + inputs[1].value + '", "gender":"' + select[0].value + '", "province":"' + select[1].value + '", "studies":"' + inputs[2].value + '"';
         var accesscode = inputs[0].value;
 
         localStorage.setItem('userdata', userdata);
