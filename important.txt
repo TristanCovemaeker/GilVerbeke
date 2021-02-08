@@ -2,4 +2,6 @@ TODO
     Na 4 seconden naar volgende trial
 
     Css veranderen bij keuze antwoord --> niet direct mogelijk
+
+    test
     
