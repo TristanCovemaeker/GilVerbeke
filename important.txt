@@ -1,7 +1,5 @@
 TODO
-    Data bundelen
-    Data doorsturen naar backend
-    Backend opzetten
-    Css veranderen bij keuze antwoord --> niet direct mogelijk
+    Na 4 seconden naar volgende trial
 
-numberOfTrials in functions.js aanpassen
+    Css veranderen bij keuze antwoord --> niet direct mogelijk
+    
